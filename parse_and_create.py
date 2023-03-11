@@ -78,10 +78,8 @@ def get_parameters_from_img(img_path):
     return parameters
 
 
-def generate_images(parameters, folder, random_seed=False):
+def generate_images(parameters, folder):
     """基于配置参数生成图片并保存"""
-    if random_seed:
-        del parameters['seed']
     response = requests.post(url=f'{url}/sdapi/v1/txt2img', json=parameters)
     r = response.json()
 
@@ -107,10 +105,10 @@ def generate_images(parameters, folder, random_seed=False):
 if __name__ == "__main__":
     url = "http://127.0.0.1:7860"
     output_folder = pathlib.Path(r"E:\novelai-webui\outputs\txt2img-images")
-    add_prompts = ", ulzzang-6500-v1.1_2, "
+    add_prompts = ""    # ", ulzzang-6500-v1.1_2, "
     del_prompts = []
     replacements = {'koreanDollLikeness_v10': 'koreanDollLikeness_v15'}
-    del_parameters = ['width', 'height', 'seed']
+    del_parameters = ['width', 'height']  # 不想保持一致的参数，包括seed等
 
     # 从剪贴板读取从Civitai网站复制的配置信息
     data = pyperclip.paste()
@@ -122,6 +120,6 @@ if __name__ == "__main__":
     # parameters = get_parameters_from_img(img_path)
     # pprint.pprint(parameters)
 
-    result = generate_images(parameters, output_folder, random_seed=False)
-    image = Image.open(io.BytesIO(base64.b64decode(result['images'][-1].split(",",1)[0])))    # 最后一张图
+    result = generate_images(parameters, output_folder)
+    image = Image.open(io.BytesIO(base64.b64decode(result['images'][-1].split(",", 1)[0])))    # 最后一张图
     image.show()
