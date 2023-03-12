@@ -14,7 +14,7 @@ AI绘画辅助脚本，包括自动解析从Civitai网站例图拷贝的生成�
 
    ![image-20230311234515362](./image/image-20230311234515362.png)
 
-   ![(extremely detailed photo 8k), full body shot photo of the most beautiful artwork in the world, beautiful woman engineer, ( rainbow hair), cleava_0](./image/(extremely detailed photo 8k), full body shot photo of the most beautiful artwork in the world, beautiful woman engineer, ( rainbow hair), cleava_0.png)
+   ![(extremely detailed photo 8k), full body shot photo of the most beautiful artwork in the world, beautiful woman engineer, ( rainbow hair), cleava_0](./image/rainbow hair.png)
 
 ## 脚本说明
 
