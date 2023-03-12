@@ -1,4 +1,4 @@
-"""解析Civitai网站例图生成参数，或者从现有图片文件读取生成参数，并调用SD WebUI作画"""
+"""解析Civitai网站例图生成参数，或者从现有图片文件读取生成参数，并调用SD WebUI的API作画"""
 import pyperclip
 import pathlib
 import pprint
@@ -108,7 +108,7 @@ if __name__ == "__main__":
     add_prompts = ""    # ", ulzzang-6500-v1.1_2, "
     del_prompts = []
     replacements = {'koreanDollLikeness_v10': 'koreanDollLikeness_v15'}
-    del_parameters = ['width', 'height']  # 不想保持一致的参数，包括seed等
+    del_parameters = []  # 不想保持一致的参数，包括seed等，例：['width', 'height', 'seed']
 
     # 从剪贴板读取从Civitai网站复制的配置信息
     data = pyperclip.paste()
