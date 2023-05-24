@@ -107,8 +107,8 @@ if __name__ == "__main__":
     output_folder = pathlib.Path(r"E:\novelai-webui\outputs\txt2img-images")
     add_prompts = ""    # ", ulzzang-6500-v1.1_2, "
     del_prompts = []
-    replacements = {'koreanDollLikeness_v10': 'koreanDollLikeness_v15'}
-    del_parameters = []  # 不想保持一致的参数，包括seed等，例：['width', 'height', 'seed']
+    replacements = {'koreanDollLikeness_v10': 'koreanDollLikeness_v15'}    # 替换prompt关键词
+    del_parameters = []  # 删除不想保持一致的参数，包括seed等，例：['width', 'height', 'seed']
 
     # 从剪贴板读取从Civitai网站复制的配置信息
     data = pyperclip.paste()
