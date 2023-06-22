@@ -18,7 +18,7 @@ def get_tags(tag_file):
             content = content.replace("，", ',')
             tags = re.split(r"\s*,\s*|\n", content.strip())  # 分割tag
         elif flag == "zh":
-            content = content.replace(",", '，')
+            content = content.replace(",", '，').replace("、", "，")
             tags = re.split(r"\s*，\s*|\n", content.strip())  # 分割tag
     return tags
 
