@@ -51,7 +51,12 @@ def parse_parameters(data, add_prompts=None, del_prompts=None, rep_prompts=None,
         parameters['negative_prompt'] = negtive_prompt
     # print(others)
     for i in others.split(', '):
-        k, v = i.split(': ')
+        try:
+            k, v = i.split(': ')
+        except Exception as e:
+            print(e)
+            print(i)
+            continue
         k = k.lower().replace(' ', '_')
         # print(k, v)
         if k == 'size':
