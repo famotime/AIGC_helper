@@ -19,7 +19,7 @@ def parse_parameters(data, add_prompts=None, del_prompts=None, rep_prompts=None,
     mappings = {'sampler': 'sampler_index', 'hires_steps': 'hr_second_pass_steps', 'hires_upscale': 'hr_scale', 'hires_upscaler': 'hr_upscaler', 'face_restoration': 'restore_faces'}
 
     # 从图片文件读取配置信息
-    if str(data).endswith(".png"):
+    if str(data).endswith(".png"):  # 剪贴板信息为png文件名
         data = get_parameters_from_img(str(data))
 
     parameters = {}
@@ -97,7 +97,10 @@ def parse_parameters(data, add_prompts=None, del_prompts=None, rep_prompts=None,
 def get_parameters_from_img(img_path):
     """从图片文件读取配置信息"""
     image = Image.open(img_path)
-    data = image.info['parameters']
+    try:
+        data = image.info['parameters'] # WebUI
+    except KeyError:
+        data = image.info['prompt'] # ComfyUI
     # print(data)
     return data
 
