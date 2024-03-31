@@ -35,6 +35,7 @@ def rename_file_to_modified_date(file_path):
         file_path.rename(new_file_path)
     except Exception:
         pass
+    return new_file_path
 
 
 def organize_image_by_model(image):
@@ -73,12 +74,14 @@ if __name__ == "__main__":
 
     # 重命名文件名，在文件名开头增加其修改日期
     print("正在重命名文件...")
+    new_files = []
     for file_path in (img_files + txt_files):
         if file_path.stem.startswith('ComfyUI_'):
             rename_file_to_modified_date(file_path)
+            new_files.append(file_path)
 
-    # 根据图片文件中的生成模型信息，分类归档图片文件
+    # 根据图片文件中的生成模型信息，分类归档图片及prompt文件
     print("正在分类归档文件...")
-    for file_path in img_files:
+    for file_path in new_files:
         print(f"正在处理：{file_path.name}...")
         organize_image_by_model(file_path)
